@@ -85,6 +85,11 @@
     if ([self.myWebView canGoBack]) {
         self.backButton.enabled = YES;
     }
+    
+    // http://stackoverflow.com/questions/2491410/get-current-url-of-uiwebview
+    // Getting the Title page using a Javascript and then parsing it then setting it to the url field
+    self.myURLTextField.text = [self.myWebView stringByEvaluatingJavaScriptFromString:@"document.title"];
+    
 }
 
 - (IBAction)plusButtonPressed:(id)sender {
@@ -95,16 +100,17 @@
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    self.myURLTextField.alpha = 0.0;
-
     
+    // The scrollViewDidScrollToTop was not getting called so..
+    // we are testing the view offset and calling it when it's at the top.
+    if (scrollView.contentOffset.y == 0) {
+        
+        self.myURLTextField.alpha = 0.99;
+    }
+    else
+    {
+        self.myURLTextField.alpha = 0.0;
+    }
 }
-- (void)scrollViewDidScrollToTop:(UIScrollView *)scrollView {
-    
-    NSLog(@"At Top!!!");
-    
-    self.myURLTextField.alpha = 0.99;
-}
-
 
 @end
