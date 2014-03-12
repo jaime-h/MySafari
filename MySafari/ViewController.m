@@ -16,6 +16,8 @@
 @property (strong, nonatomic) IBOutlet UITextField *myURLTextField;
 @property (strong, nonatomic) IBOutlet UIWebView   *myWebView;
 
+- (IBAction)onBackButtonPressed:(id)sender;
+- (IBAction)onForwardButton:(id)sender;
 @end
 
 @implementation ViewController
@@ -39,6 +41,14 @@
     return YES;
 }
 
+- (IBAction)onBackButtonPressed:(id)sender {
+    
+    [self.myWebView goBack];
+    
+}
 
-
+- (IBAction)onForwardButton:(id)sender {
+   
+    [self.myWebView goForward];
+}
 @end
