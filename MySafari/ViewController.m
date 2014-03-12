@@ -9,6 +9,12 @@
 #import "ViewController.h"
 
 @interface ViewController ()
+{
+    __weak IBOutlet UIWebView *myWebView;
+    
+}
+@property (strong, nonatomic) IBOutlet UITextField *myURLTextField;
+@property (strong, nonatomic) IBOutlet UIWebView   *myWebView;
 
 @end
 
