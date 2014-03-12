@@ -25,11 +25,20 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
 }
-
-- (void)didReceiveMemoryWarning
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    NSString *appendHTTPer =@"HTTP://";
+    appendHTTPer = [appendHTTPer stringByAppendingString:textField.text];
+    NSString *completAddress = appendHTTPer;
+    NSURL *urlString = [NSURL URLWithString:completAddress];
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:urlString];
+    
+    [self.myWebView loadRequest:request];
+    
+    return YES;
 }
+
+
 
 @end
